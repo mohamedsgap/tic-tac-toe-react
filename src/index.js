@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Square extends React.Component {
+// the constructor is no longer keeps track of game's state
+/*
   constructor(props){
     super(props);
     this.state = {
       value: null,
     };
   }
-
+*/
   render() {
     return (
       <button
@@ -30,6 +32,12 @@ class Board extends React.Component {
         squares: Array(9).fill(null),
       };
 
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares:squares});
   }
   renderSquare(i) {
     return <Square
